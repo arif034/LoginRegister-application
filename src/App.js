@@ -5,14 +5,59 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedIn: true
+      jsxToRender: (
+        <div className="App">
+          <button onClick={() => this.onLoginHandler()}>Login</button>
+          <br />
+          <br />
+          <button onClick={() => this.onRegisterHandler()}>Register</button>
+        </div>
+      )
     };
   }
 
-  onLoginClickHandler = (event) => {};
+  onLoginHandler = () => {
+    const jsx = (
+      <div className="App">
+        First Name :
+        <input type="text" name="firstName" placeholder="First Name" />
+        <br />
+        <br />
+        Last Name :
+        <input type="text" name="LastName" placeholder="Last Name" />
+        <br />
+        <br />
+        Email Id : <input type="text" name="EmailId" placeholder="Email Id" />
+        <br />
+        <br />
+        Password : <input type="text" name="Password" placeholder="Password" />
+        <br />
+        <br />
+        Confirm Password :
+        <input
+          type="text"
+          name="confirmPassword"
+          placeholder="Confirm Password"
+        />
+      </div>
+    );
+    this.setState({ jsxToRender: jsx });
+  };
+  onRegisterHandler = () => {
+    const jsx = (
+      <div className="App">
+        <input type="text" name="emailId" placeholder="Email Id" />
+        <br />
+        <br />
+        <input type="text" name="password" placeholder="Password" />
+      </div>
+    );
+    this.setState({ jsxToRender: jsx });
+  };
 
   render() {
-    return <div className="App"></div>;
+    const jsx = this.state.jsxToRender;
+    return { jsx };
   }
 }
 export default App;
